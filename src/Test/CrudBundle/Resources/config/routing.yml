@@ -1,0 +1,22 @@
+test_crud_homepage:
+    path:     /animal
+    defaults: { _controller: TestCrudBundle:Animal:index }
+    
+test_crud_add:
+    path:     /animal/add/{type}/{enveloppe}
+    defaults: { _controller: TestCrudBundle:Animal:add }
+    requirements:
+        type: reptile|mammifere|oiseau
+        enveloppe: ecaille|fourrure|plumage
+        
+test_crud_edit:
+    path:     /animal/edit/{id}
+    defaults: { _controller: TestCrudBundle:Animal:edit }
+    requirements:
+        id: \d+
+    
+test_crud_delete:
+    path:     /animal/delete/{id}
+    defaults: { _controller: TestCrudBundle:Animal:delete }
+    requirements:
+        id: \d+

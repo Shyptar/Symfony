@@ -1,0 +1,46 @@
+{# src/Test/CrudBundle/Resources/views/Animal/index.html.twig #}
+
+{% extends "TestCrudBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block testcrud_body %}
+
+  <h2>Liste des animaux</h2>
+
+    <div class="row">
+        <a class="btn btn-primary" href="{{ path('test_crud_add', {'type': reptile[0], 'enveloppe': reptile[1]} ) }}" role="bouton">Ajouter reptile</a>
+        <a class="btn btn-primary" href="{{ path('test_crud_add', {'type': mammifere[0], 'enveloppe': mammifere[1]}) }}" role="bouton">Ajouter mammifère</a>
+        <a class="btn btn-primary" href="{{ path('test_crud_add', {'type': oiseau[0], 'enveloppe': oiseau[1]}) }}" role="bouton">Ajouter oiseau</a>
+    </div>
+      
+      <table class="table table-striped">
+        {% for animal in listAnimals %}
+          <tr>
+              <td>{{animal.nom}}</td>
+              <td>Je suis un(e) {{animal.espece}} et ma/mon {{animal.enveloppe}} est/sont {{animal.description}}</td>
+              <td>  
+                  <p>
+                    <a href="{{ path('test_crud_edit', {'id': animal.id}) }}" class="btn btn-info">
+                      <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a href="{{ path('test_crud_delete', {'id': animal.id}) }}" class="btn btn-danger">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                  </p>
+              </td>
+          </tr>
+        {% else %}
+          <h3>Pas (encore !) d'animaux</h3>
+        {% endfor %}
+      </table>
+
+    <div class="row">
+        <a class="btn btn-primary" href="{{ path('test_crud_add', {'type': reptile[0], 'enveloppe': reptile[1]} ) }}" role="bouton">Ajouter reptile</a>
+        <a class="btn btn-primary" href="{{ path('test_crud_add', {'type': mammifere[0], 'enveloppe': mammifere[1]}) }}" role="bouton">Ajouter mammifère</a>
+        <a class="btn btn-primary" href="{{ path('test_crud_add', {'type': oiseau[0], 'enveloppe': oiseau[1]}) }}" role="bouton">Ajouter oiseau</a>
+    </div>
+
+{% endblock %}

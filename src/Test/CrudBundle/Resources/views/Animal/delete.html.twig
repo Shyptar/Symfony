@@ -1,0 +1,29 @@
+{# src/Test/CrudBundle/Resources/views/Animal/delete.html.twig #}
+
+{% extends "TestCrudBundle::layout.html.twig" %}
+
+{% block title %}
+  Supprimer une animal - {{ parent() }}
+{% endblock %}
+
+{% block testcrud_body %}
+
+  <h2>Supprimer un animal</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer "{{ animal.nom }}" :'( ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('test_crud_delete', {'id': animal.id}) }}" method="post">
+    <a href="{{ path('test_crud_homepage') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à l'accueil
+    </a>
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {# Ceci va générer le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}
