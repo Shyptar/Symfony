@@ -16,11 +16,17 @@
         <a class="btn btn-primary" href="{{ path('test_crud_add', {'type': oiseau[0], 'enveloppe': oiseau[1]}) }}" role="bouton">Ajouter oiseau</a>
     </div>
       
-      <table class="table table-striped">
+      <table class="table table-bordered">
+        <tr>
+            <th>Nom</th>
+            <th>Présentation</th>
+            <th>Option</th>
+        </tr>
         {% for animal in listAnimals %}
-          <tr>
-              <td>{{animal.nom}}</td>
-              <td>Je suis un(e) {{animal.espece}} et ma/mon {{animal.enveloppe}} est/sont {{animal.description}}</td>
+          {% if  animal.type == "oiseau" %}
+        <tr bgcolor="#ffee58s" >
+              <td>{{ animal.nom }}</td>
+              <td>{{ animal.tweet() }}</td>
               <td>  
                   <p>
                     <a href="{{ path('test_crud_edit', {'id': animal.id}) }}" class="btn btn-info">
@@ -31,6 +37,37 @@
                     </a>
                   </p>
               </td>
+          {% elseif animal.type == "reptile" %}
+        <tr bgcolor="#4caf50" >
+              <td>{{ animal.nom }}</td>
+              <td>{{ animal.hiss() }}</td>
+              <td>  
+                  <p>
+                    <a href="{{ path('test_crud_edit', {'id': animal.id}) }}" class="btn btn-info">
+                      <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a href="{{ path('test_crud_delete', {'id': animal.id}) }}" class="btn btn-danger">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                  </p>
+              </td>
+          {% else %}
+        <tr bgcolor="#e57373" >
+              <td>{{ animal.nom }}</td>
+              <td>{{ animal.growl() }}</td>
+              <td>  
+                  <p>
+                    <a href="{{ path('test_crud_edit', {'id': animal.id}) }}" class="btn btn-info">
+                      <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    <a href="{{ path('test_crud_delete', {'id': animal.id}) }}" class="btn btn-danger">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                  </p>
+              </td>
+          {% endif %}
+
+
           </tr>
         {% else %}
           <h3>Pas (encore !) d'animaux</h3>

@@ -186,5 +186,35 @@ class Animal
     {
         return $this->type;
     }
+    
+    /**
+     * Reptile
+     *
+     * @return string
+     */
+    public function hiss()
+    {
+        return "Je suis un ".$this->getEspece()." et mes écailles sont ".$this->getDescription();
+    }    
+    
+    /**
+     * Mammifère
+     *
+     * @return string
+     */
+    public function growl()
+    {
+        return "Je suis un ".$this->getEspece()." et ma fourrure est ".$this->getDescription();
+    }    
+    
+    /**
+     * Mammifère
+     *
+     * @return string
+     */
+    public function tweet()
+    {
+        return "Je suis un ".$this->getEspece()." et mon plumage est ".$this->getDescription();
+    }
 }
 

@@ -51,8 +51,8 @@ class AnimalController extends Controller
       ->add('nom',            TextType::class)
       ->add('espece',         TextType::class)
       ->add('description',    TextType::class)
-      ->add('enveloppe',      TextType::class)
-      ->add('type',           TextType::class)
+      ->add('enveloppe',      TextType::class, array('attr' => array('readonly' => 'true')))
+      ->add('type',           TextType::class, array('attr' => array('readonly' => 'true')))
       ->add('save',           SubmitType::class)
       ->getForm()
     ;
@@ -95,8 +95,8 @@ class AnimalController extends Controller
       ->add('nom',            TextType::class)
       ->add('espece',         TextType::class)
       ->add('description',    TextType::class)
-      ->add('enveloppe',      TextType::class)
-      ->add('type',           TextType::class)
+      ->add('enveloppe',      TextType::class, array('attr' => array('readonly' => 'true')))
+      ->add('type',           TextType::class, array('attr' => array('readonly' => 'true')))
       ->add('save',           SubmitType::class)
       ->getForm()
     ;
